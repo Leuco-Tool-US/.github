@@ -1,0 +1,29 @@
+name: Feature or improvement
+description: Propose a new capability, workflow improvement, or technical enhancement.
+title: "[Proposal] "
+labels: []
+body:
+  - type: input
+    id: problem
+    attributes:
+      label: Problem or opportunity
+      description: What problem should be solved?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed approach
+      description: Describe the idea without assuming the implementation is already decided.
+    validations:
+      required: true
+  - type: textarea
+    id: value
+    attributes:
+      label: Expected value
+      description: What benefit would this provide?
+  - type: textarea
+    id: risks
+    attributes:
+      label: Risks, dependencies, or open questions
+      description: Include security, data, workflow, maintenance, or training concerns when relevant.

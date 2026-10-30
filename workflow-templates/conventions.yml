@@ -1,0 +1,57 @@
+# LEUCO convention policy v1. Keep installed copies aligned with the organization template.
+name: Contribution conventions
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize, reopened, ready_for_review]
+
+permissions:
+  contents: read
+  pull-requests: read
+
+concurrency:
+  group: conventions-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  conventions:
+    name: conventions
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check title, branch, and commit subjects
+        uses: actions/github-script@v9
+        with:
+          script: |
+            const pr = context.payload.pull_request;
+            const types = 'feat|fix|docs|refactor|test|build|ci|chore|perf|style|revert';
+            const subject = new RegExp('^(' + types + ')(\\([a-z0-9][a-z0-9._/-]*\\))?!?: \\S[^\\r\\n]*$');
+            const branch = new RegExp('^(' + types + ')/[a-z0-9]+(?:-[a-z0-9]+)*$');
+            const errors = [];
+            if (!subject.test(pr.title)) {
+              errors.push('PR title must look like: docs: clarify setup instructions');
+            }
+            if (!branch.test(pr.head.ref)) {
+              errors.push('Source branch must look like: docs/setup-guide (lowercase, hyphenated words).');
+            }
+            if (pr.commits > 250) {
+              core.setFailed('This check supports up to 250 commits per PR. Split the work or have an administrator extend the checker; no partial validation is accepted.');
+              return;
+            }
+            const commits = await github.paginate(github.rest.pulls.listCommits, {
+              ...context.repo, pull_number: pr.number, per_page: 100
+            });
+            if (commits.length !== pr.commits) {
+              core.setFailed('The PR changed or the commit list is incomplete. Rerun this check.');
+              return;
+            }
+            for (const commit of commits) {
+              // Preserve regular merge commits, including GitHub-generated update/merge messages.
+              if (commit.parents.length > 1) continue;
+              const firstLine = commit.commit.message.split(/\r?\n/, 1)[0];
+              if (!subject.test(firstLine)) {
+                errors.push('Commit ' + commit.sha.slice(0, 7) + ' needs a Conventional Commit subject.');
+              }
+            }
+            if (errors.length) core.setFailed(errors.join('\n'));
+            else core.info('Title, branch, and all non-merge commit subjects follow the convention.');
