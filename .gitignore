@@ -1,0 +1,10 @@
+# OS and editor local state
+.DS_Store
+Thumbs.db
+.idea/
+*.code-workspace
+
+# Temporary files
+*.tmp
+*.temp
+*.log

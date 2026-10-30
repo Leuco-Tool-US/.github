@@ -1,0 +1,11 @@
+{
+  "name": "LEUCO Python CI",
+  "description": "Starter CI workflow for Python repositories using pytest and Ruff.",
+  "iconName": "octicon check-circle",
+  "categories": [
+    "Python"
+  ],
+  "filePatterns": [
+    "^pyproject\\.toml$"
+  ]
+}

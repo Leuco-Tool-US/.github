@@ -1,0 +1,5 @@
+{
+  "name": "LEUCO contribution conventions",
+  "description": "Checks PR titles, source branches, and non-merge commit subjects. Install and require separately.",
+  "iconName": "octicon check-circle"
+}
