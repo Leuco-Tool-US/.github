@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="350" viewBox="0 0 1280 350" role="img" aria-labelledby="title desc">
+<title id="title">LEUCO US — Software, automation, and shared knowledge</title>
+<desc id="desc">A dark charcoal banner with magenta accents and a restrained pattern of intersecting lines.</desc>
+<defs>
+ <pattern id="lines" width="50" height="50" patternUnits="userSpaceOnUse" patternTransform="rotate(32)">
+  <path d="M0 0V50" stroke="#ffffff" stroke-opacity=".07" stroke-width="1"/>
+ </pattern>
+ <linearGradient id="shade" x1="0" x2="1"><stop stop-color="#15171b"/><stop offset="1" stop-color="#25202a"/></linearGradient>
+</defs>
+<rect width="1280" height="350" rx="12" fill="url(#shade)"/>
+<path d="M870 0H1280V350H690Z" fill="url(#lines)"/>
+<path d="M1040 -80L780 430" stroke="#d90078" stroke-width="2" opacity=".65"/>
+<path d="M1170 -80L910 430" stroke="#d90078" stroke-width="28" opacity=".13"/>
+<rect x="58" y="53" width="7" height="34" fill="#ed008c"/>
+<text x="82" y="81" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="31" letter-spacing="3" fill="#ffffff">LEUCO US</text>
+<text x="60" y="170" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="49" letter-spacing="-1" fill="#ffffff">Practical ideas.</text>
+<text x="60" y="227" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="49" letter-spacing="-1" fill="#ffffff">Useful tools.</text>
+<text x="62" y="293" font-family="Arial,Helvetica,sans-serif" font-size="21" fill="#c3c4cc">Software. Automation. Shared knowledge.</text>
+</svg>
