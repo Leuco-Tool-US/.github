@@ -1,19 +1,104 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="350" viewBox="0 0 1280 350" role="img" aria-labelledby="title desc">
-<title id="title">LEUCO US — Software, automation, and shared knowledge</title>
-<desc id="desc">A dark charcoal banner with magenta accents and a restrained pattern of intersecting lines.</desc>
-<defs>
- <pattern id="lines" width="50" height="50" patternUnits="userSpaceOnUse" patternTransform="rotate(32)">
-  <path d="M0 0V50" stroke="#ffffff" stroke-opacity=".07" stroke-width="1"/>
- </pattern>
- <linearGradient id="shade" x1="0" x2="1"><stop stop-color="#15171b"/><stop offset="1" stop-color="#25202a"/></linearGradient>
-</defs>
-<rect width="1280" height="350" rx="12" fill="url(#shade)"/>
-<path d="M870 0H1280V350H690Z" fill="url(#lines)"/>
-<path d="M1040 -80L780 430" stroke="#d90078" stroke-width="2" opacity=".65"/>
-<path d="M1170 -80L910 430" stroke="#d90078" stroke-width="28" opacity=".13"/>
-<rect x="58" y="53" width="7" height="34" fill="#ed008c"/>
-<text x="82" y="81" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="31" letter-spacing="3" fill="#ffffff">LEUCO US</text>
-<text x="60" y="170" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="49" letter-spacing="-1" fill="#ffffff">Practical ideas.</text>
-<text x="60" y="227" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="49" letter-spacing="-1" fill="#ffffff">Useful tools.</text>
-<text x="62" y="293" font-family="Arial,Helvetica,sans-serif" font-size="21" fill="#c3c4cc">Software. Automation. Shared knowledge.</text>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1280 350">
+  <!-- Generator: Adobe Illustrator 30.8.2, SVG Export Plug-In . SVG Version: 2.1.4 Build 7)  -->
+  <defs>
+    <style>
+      .st0 {
+        fill: #ed008c;
+      }
+
+      .st1 {
+        fill: url(#lines);
+      }
+
+      .st2 {
+        font-family: LEUCO-Bold, LEUCO;
+        font-size: 31px;
+        letter-spacing: .1em;
+      }
+
+      .st2, .st3, .st4, .st5, .st6, .st7, .st8 {
+        isolation: isolate;
+      }
+
+      .st2, .st4 {
+        fill: #fff;
+        font-weight: 700;
+      }
+
+      .st9, .st5 {
+        fill: none;
+      }
+
+      .st3 {
+        opacity: .13;
+        stroke-width: 28px;
+      }
+
+      .st3, .st8 {
+        stroke: #d90078;
+      }
+
+      .st4 {
+        font-family: Arial-BoldMT, Arial;
+        font-size: 49px;
+      }
+
+      .st5 {
+        opacity: .07;
+        stroke: #fff;
+      }
+
+      .st6 {
+        fill: #c3c4cc;
+        font-family: ArialMT, Arial;
+        font-size: 21px;
+      }
+
+      .st10 {
+        font-family: MyriadPro-Regular, 'Myriad Pro';
+        font-size: 12px;
+      }
+
+      .st11 {
+        fill: url(#linear-gradient);
+      }
+
+      .st8 {
+        opacity: .65;
+        stroke-width: 2px;
+      }
+    </style>
+    <linearGradient id="linear-gradient" x1="1179.08" y1="-.21" x2="1180.08" y2="-.21" gradientTransform="translate(-1509220 250) scale(1280 350)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#15171b"/>
+      <stop offset="1" stop-color="#25202a"/>
+    </linearGradient>
+    <pattern id="lines" x="0" y="0" width="50" height="50" patternTransform="translate(-2330.2609 14191.2369) rotate(32)" patternUnits="userSpaceOnUse" viewBox="0 0 50 50">
+      <g>
+        <rect class="st9" width="50" height="50"/>
+        <g>
+          <rect class="st9" width="50" height="50"/>
+          <g>
+            <line class="st9" y2="50"/>
+            <line class="st5" y2="50"/>
+          </g>
+        </g>
+      </g>
+    </pattern>
+  </defs>
+  <rect class="st11" width="1280" height="350" rx="12" ry="12"/>
+  <path class="st1" d="M870,0h410v350h-590L870,0Z"/>
+  <path class="st8" d="M1040-80l-260,510"/>
+  <path class="st3" d="M1170-80l-260,510"/>
+  <rect class="st0" x="58" y="53" width="7" height="34"/>
+  <g class="st7">
+    <text class="st2" transform="translate(82 81)"><tspan x="0" y="0">LEUCO</tspan></text>
+  </g>
+  <g class="st7">
+    <text class="st4" transform="translate(60 170)"><tspan x="0" y="0">The sharpest cutting edges, </tspan><tspan x="0" y="58.8">Meet the most cutting-edge business solutions</tspan></text>
+  </g>
+  <g class="st7">
+    <text class="st6" transform="translate(62 293)"><tspan x="0" y="0">Practical software. Powerful automation. Continuous improvement. Built for Leuco, by Leuco.</tspan></text>
+  </g>
+  <text class="st10" transform="translate(157 495)"><tspan x="0" y="0">Lorem ipsum</tspan></text>
 </svg>

@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/leuco-banner.svg" alt="LEUCO US — Software, automation, and shared knowledge" width="100%">
+  <img src="assets/leuco-banner.svg" alt="LEUCO US — A new generation of tools. A sharper way to work. Practical software. Smarter automation. Continuous improvement." width="100%">
 </p>
 
 <p align="center">
