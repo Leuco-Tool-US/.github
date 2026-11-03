@@ -10,7 +10,7 @@
   <a href="https://github.com/Leuco-Tool-US/.github/blob/main/CONTRIBUTING.md"><strong>Contribution guide</strong></a>
 </p>
 
-## Precision in our tools. Purpose in our software.
+## Precision tools meet purpose built software.
 
 LEUCO supplies precision tooling for machining wood, plastics, and composites. Here, we bring that practical focus to software: solving everyday problems, improving how we work, and keeping useful knowledge within reach.
 
