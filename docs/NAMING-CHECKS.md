@@ -13,3 +13,11 @@ Bot PRs are not exempt. Configure automation for the same conventions, or docume
 Review modifications to required workflows. Editable workflows are not tamper-proof enforcement. Use repository permissions and verified reviewers/CODEOWNERS; consider organization-required workflows if your future plan supports them. Workflow updates must be deliberately propagated; copying a template does not establish automatic updates.
 
 Sources: [github-script](https://github.com/actions/github-script), [API limit](https://docs.github.com/en/rest/pulls/pulls#list-commits-on-a-pull-request), [rulesets](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/creating-rulesets-for-a-repository).
+
+## Getting help with a failed check
+
+Open the failed **conventions** check and its run **Summary**. It identifies the exact branch, PR title or commit message that failed and provides a ready-to-copy request containing the PR link. Paste that request into a work-account Claude Code session with repository access and the company plugin available. With plugin version 0.4.0 or later, `/leuco-workflows:fix-contribution-check` is the explicit shortcut; colleagues can also ask in ordinary language.
+
+Changing a PR title does not change its commit messages. A commit-message repair changes the commit ID, so Claude previews it and requests confirmation before replacing a published commit. The routine automated path supports one ordinary, author-owned tip commit on an unmerged PR branch. Shared, signed or complex history needs a coordinated maintainer plan. New valid commits do not fix earlier invalid messages.
+
+The check itself never modifies repository contents or starts a Claude session. It uses read-only permissions, requires no AI API key and does not execute code from the PR. The new skill must be distributed before employees can invoke it; publishing this template does not update existing workflow copies or installed plugins automatically.
