@@ -41,10 +41,10 @@ We use branches and pull requests to discuss proposed changes before they become
 
 ### For team members
 
-Sign in with the GitHub account connected to LEUCO US, then open **[Repositories](https://github.com/Leuco-Tool-US?tab=repositories)** to see the projects available to you. For a specific project, start with its README.
+Sign in with the GitHub account connected to LEUCO US, then open **[Repositories](https://github.com/Leuco-Tool-US?tab=repositories)** to see the organization's projects. Members can read all of them. For a specific project, start with its README.
 
-Missing access? Contact your organization administrator through the company's internal support channel.
+Cannot see the private projects? Check that you accepted your invitation, then contact your organization administrator through the company's internal support channel.
 
 ---
 
-<sub>This profile is public. Repository access is managed separately; signing in shows the private projects your account is authorized to access.</sub>
+<sub>This profile is public. Private projects are visible only to signed-in members of the organization.</sub>
