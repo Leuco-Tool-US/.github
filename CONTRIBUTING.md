@@ -22,7 +22,7 @@ Do not make routine changes directly on `main`. An administrator may make the in
 
 ## Branch names
 
-Use `type/short-description`, with lowercase words separated by hyphens. Examples: `feat/inventory-search`, `fix/incorrect-total`, `docs/setup-guide`, `chore/project-scaffold`, and `ci/automated-checks`.
+Use `type/short-description`, with lowercase words separated by hyphens. Examples: `feat/inventory-search`, `fix/incorrect-total`, `docs/setup-guide`, `chore/project-scaffold`, and `ci/automated-checks`. For Claude Code cloud sessions, use the assigned `claude/<slug>-<six-character-id>` branch when the destination repository supports that format.
 
 Use a separate branch for each task. An issue number is optional: `fix/123-incorrect-total`.
 
