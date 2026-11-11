@@ -21,3 +21,5 @@ Open the failed **conventions** check and its run **Summary**. It identifies the
 Changing a PR title does not change its commit messages. A commit-message repair changes the commit ID, so Claude previews it and requests confirmation before replacing a published commit. The routine automated path supports one ordinary, author-owned tip commit on an unmerged PR branch. Shared, signed or complex history needs a coordinated maintainer plan. New valid commits do not fix earlier invalid messages.
 
 The check itself never modifies repository contents or starts a Claude session. It uses read-only permissions, requires no AI API key and does not execute code from the PR. The new skill must be distributed before employees can invoke it; publishing this template does not update existing workflow copies or installed plugins automatically.
+
+Claude Code cloud sessions can use their assigned branch when it matches `claude/<lowercase-hyphenated-slug>-<six-character-lowercase-alphanumeric-id>`. The check recognizes the branch format. It does not verify who created the branch. PR titles and commit messages follow the usual rules.
