@@ -37,6 +37,8 @@ async function check(options={}) {
     ['multiline title',{pr:{title:'docs: fine\nmalformed'}},true],
     ['uppercase type',{pr:{title:'Docs: update'}},true],
     ['missing description',{pr:{title:'docs: '}},true],
+    ['Claude cloud branch',{pr:{head:{ref:'claude/vault-inbox-guide-review-chnsdj'}}},false],
+    ['invalid Claude branch',{pr:{head:{ref:'claude/arbitrary'}}},true],
     ['invalid branch',{pr:{head:{ref:'alex/review'}}},true],
     ['issue branch',{pr:{head:{ref:'fix/123-incorrect-total'}}},false],
     ['bad ordinary commit',{list:[commit('updates')]},true],

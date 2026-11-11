@@ -34,7 +34,7 @@ jobs:
               .replace(/`/g, '&#96;').replace(/\r?\n/g, ' ');
             const issue = (kind, actual, reason) => errors.push({kind, actual, reason});
             if (!subject.test(pr.title)) issue('PR title', pr.title, 'Use type: description, with a space after the colon. Example: docs: clarify setup.');
-            if (!branch.test(pr.head.ref)) issue('Branch name', pr.head.ref, 'Use type/short-description with lowercase, hyphenated words. Example: docs/setup-guide.');
+            if (!branch.test(pr.head.ref) && !/^claude\/[a-z0-9]+(?:-[a-z0-9]+)*-[a-z0-9]{6}$/.test(pr.head.ref)) issue('Branch name', pr.head.ref, 'Use type/short-description with lowercase, hyphenated words. Example: docs/setup-guide. Claude Code cloud branches may use claude/<slug>-<six-character-id>.');
             if (pr.commits > 250) {
               issue('Commit list', pr.commits, 'This check supports up to 250 commits. Ask a maintainer to split or extend validation; it cannot partially validate a PR.');
             } else {
