@@ -28,30 +28,53 @@ jobs:
             const subject = new RegExp('^(' + types + ')(\\([a-z0-9][a-z0-9._/-]*\\))?!?: \\S[^\\r\\n]*$');
             const branch = new RegExp('^(' + types + ')/[a-z0-9]+(?:-[a-z0-9]+)*$');
             const errors = [];
-            if (!subject.test(pr.title)) {
-              errors.push('PR title must look like: docs: clarify setup instructions');
-            }
-            if (!branch.test(pr.head.ref)) {
-              errors.push('Source branch must look like: docs/setup-guide (lowercase, hyphenated words).');
-            }
+            // Render PR metadata as inert text, not Markdown/HTML instructions or links.
+            const safe = value => String(value).replace(/&/g, '&amp;').replace(/</g, '&lt;')
+              .replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;')
+              .replace(/`/g, '&#96;').replace(/\r?\n/g, ' ');
+            const issue = (kind, actual, reason) => errors.push({kind, actual, reason});
+            if (!subject.test(pr.title)) issue('PR title', pr.title, 'Use type: description, with a space after the colon. Example: docs: clarify setup.');
+            if (!branch.test(pr.head.ref) && !/^claude\/[a-z0-9]+(?:-[a-z0-9]+)*-[a-z0-9]{6}$/.test(pr.head.ref)) issue('Branch name', pr.head.ref, 'Use type/short-description with lowercase, hyphenated words. Example: docs/setup-guide. Claude Code cloud branches may use claude/<slug>-<six-character-id>.');
             if (pr.commits > 250) {
-              core.setFailed('This check supports up to 250 commits per PR. Split the work or have an administrator extend the checker; no partial validation is accepted.');
-              return;
-            }
-            const commits = await github.paginate(github.rest.pulls.listCommits, {
-              ...context.repo, pull_number: pr.number, per_page: 100
-            });
-            if (commits.length !== pr.commits) {
-              core.setFailed('The PR changed or the commit list is incomplete. Rerun this check.');
-              return;
-            }
-            for (const commit of commits) {
-              // Preserve regular merge commits, including GitHub-generated update/merge messages.
-              if (commit.parents.length > 1) continue;
-              const firstLine = commit.commit.message.split(/\r?\n/, 1)[0];
-              if (!subject.test(firstLine)) {
-                errors.push('Commit ' + commit.sha.slice(0, 7) + ' needs a Conventional Commit subject.');
+              issue('Commit list', pr.commits, 'This check supports up to 250 commits. Ask a maintainer to split or extend validation; it cannot partially validate a PR.');
+            } else {
+              try {
+                const commits = await github.paginate(github.rest.pulls.listCommits, {
+                  ...context.repo, pull_number: pr.number, per_page: 100
+                });
+                if (commits.length !== pr.commits) {
+                  issue('Commit list', commits.length, 'The PR changed or the API list is incomplete. Rerun the check before changing anything.');
+                } else {
+                  for (const commit of commits) {
+                    if (commit.parents.length > 1) continue;
+                    const firstLine = commit.commit.message.split(/\r?\n/, 1)[0];
+                    if (!subject.test(firstLine)) {
+                      const missingSpace = new RegExp('^(' + types + ')(\\([a-z0-9][a-z0-9._/-]*\\))?!?:\\S').test(firstLine);
+                      const reason = missingSpace
+                        ? 'Add the missing space after the colon. Changing the PR title does not change this commit message.'
+                        : 'Use a Conventional Commit message, for example docs: clarify setup. Changing the PR title or adding a new commit does not repair this existing message.';
+                      issue('Commit ' + commit.sha.slice(0, 7), firstLine, reason);
+                    }
+                  }
+                }
+              } catch (error) {
+                issue('GitHub API', 'Commit list unavailable', 'The check could not read all commits. Rerun it; if it fails again, ask a maintainer to check access or service status.');
               }
             }
-            if (errors.length) core.setFailed(errors.join('\n'));
+            const prUrl = `${process.env.GITHUB_SERVER_URL || 'https://github.com'}/${context.repo.owner}/${context.repo.repo}/pull/${pr.number}`;
+            let report = '# Contribution naming check\n\n';
+            if (errors.length) {
+              report += 'Your changes are still in the pull request. The items below need attention before this check can pass.\n\n';
+              report += '<table><tr><th>Item</th><th>Current value</th><th>What needs fixing</th></tr>';
+              for (const error of errors) report += `<tr><td>${safe(error.kind)}</td><td><code>${safe(error.actual)}</code></td><td>${safe(error.reason)}</td></tr>`;
+              report += '</table>\n\n## Have Claude handle it\n\n';
+              report += 'Open a work-account Claude Code session with this repository available. If the company leuco-workflows plugin is installed, paste this request:\n\n';
+              report += '```text\nPlease fix the contribution naming check for ' + prUrl + '. Read the actual failed run and preserve my file changes. Explain the proposed correction. Ask before replacing any published commits or renaming a published branch. Do not merge the PR.\n```\n\n';
+              report += 'You can also invoke `/leuco-workflows:fix-contribution-check` with the PR link when that skill is installed. If unavailable, share this run with a repository maintainer.\n\n';
+              report += 'Claude needs GitHub access and suitable tools; this check cannot launch Claude or grant it access. A commit-message repair replaces a commit on the PR branch, so it requires a deliberate, coordinated update. Do not force-push main.\n';
+            } else {
+              report += 'Passed: PR title, source branch and all non-merge commit messages follow the convention. This is a naming check, not policy approval or a code-quality review.\n';
+            }
+            await core.summary.addRaw(report).write();
+            if (errors.length) core.setFailed(errors.map(e => `${e.kind}: ${e.actual}. ${e.reason}`).join('\n') + '\nOpen the run Summary for a ready-to-copy Claude repair request.');
             else core.info('Title, branch, and all non-merge commit subjects follow the convention.');

@@ -17,13 +17,14 @@ async function check(options={}) {
   const pr = {number:1,title:'docs: clarify setup',head:{ref:'docs/setup-guide'},
     commits: commits.length, ...options.pr};
   const failures = [];
+  let report = "";
   let called = false;
   const github = {rest:{pulls:{listCommits:()=>{}}},paginate:async(_fn,args)=>{
-    called=true; assert.equal(args.pull_number,1); return commits;
+    called=true; assert.equal(args.pull_number,1); if(options.apiError) throw new Error("unavailable"); return commits;
   }};
   await run({payload:{pull_request:pr},repo:{owner:'test',repo:'test'}},
-    github,{setFailed:m=>failures.push(m),info:()=>{}});
-  return {failures,called};
+    github,{setFailed:m=>failures.push(m),info:()=>{},summary:{addRaw:text=>{report+=text;return {write:async()=>{}};}}});
+  return {failures,called,report};
 }
 (async()=>{
   const cases = [
@@ -36,9 +37,14 @@ async function check(options={}) {
     ['multiline title',{pr:{title:'docs: fine\nmalformed'}},true],
     ['uppercase type',{pr:{title:'Docs: update'}},true],
     ['missing description',{pr:{title:'docs: '}},true],
+    ['Claude cloud branch',{pr:{head:{ref:'claude/vault-inbox-guide-review-chnsdj'}}},false],
+    ['invalid Claude branch',{pr:{head:{ref:'claude/arbitrary'}}},true],
     ['invalid branch',{pr:{head:{ref:'alex/review'}}},true],
     ['issue branch',{pr:{head:{ref:'fix/123-incorrect-total'}}},false],
     ['bad ordinary commit',{list:[commit('updates')]},true],
+    ['missing colon space',{list:[commit('docs:Correct organization name in README')]},true],
+    ['metadata escaped',{list:[commit('<img src=x onerror=alert(1)>')]},true],
+    ['API failure',{apiError:true},true],
     ['incomplete API list',{pr:{commits:2}},true],
     ['250 commits',{list:Array.from({length:250},()=>commit('test: add case'))},false],
     ['over limit',{pr:{commits:251}},true],
@@ -47,6 +53,20 @@ async function check(options={}) {
     const result=await check(options);
     assert.equal(result.failures.length>0,fail,name);
     if(name==='over limit') assert.equal(result.called,false);
+    if(fail) {
+      assert.ok(result.report.includes('https://github.com/test/test/pull/1'),name);
+      assert.ok(result.report.includes('/leuco-workflows:fix-contribution-check'),name);
+    }
+    if(name==='missing colon space') {
+      assert.ok(result.report.includes('Add the missing space after the colon.'));
+      assert.ok(result.report.includes('Changing the PR title does not change this commit message.'));
+    }
+    if(name==='metadata escaped') {
+      assert.ok(!result.report.includes('<img'));
+      assert.ok(result.report.includes('&lt;img'));
+    }
+    if(name==='valid') assert.ok(result.report.includes('Passed:'));
+    if(name==='API failure') assert.ok(result.report.includes('could not read all commits'));
   }
   console.log(cases.length+' convention workflow fixtures passed');
 })().catch(error=>{console.error(error);process.exitCode=1;});

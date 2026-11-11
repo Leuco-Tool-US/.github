@@ -32,3 +32,12 @@ Public repositories can use repository rulesets on GitHub Free. Private organiza
 Use a real documentation PR as a pilot. Confirm its valid title, branch and commit subjects pass. Temporarily use an invalid PR title to verify the check fails, then restore the compliant title and confirm it passes again. Require the verified check only after this pilot. Keep the pilot evidence with the setup record.
 
 A workflow marked active with no run is unresolved, not a passing check. Inspect Actions permissions, triggering events and run diagnostics before relying on it.
+## Getting help with a failed check
+
+Open the failed **conventions** check and its run **Summary**. It identifies the exact branch, PR title or commit message that failed and provides a ready-to-copy request containing the PR link. Paste that request into a work-account Claude Code session with repository access and the company plugin available. With plugin version 0.4.0 or later, `/leuco-workflows:fix-contribution-check` is the explicit shortcut; colleagues can also ask in ordinary language.
+
+Changing a PR title does not change its commit messages. A commit-message repair changes the commit ID, so Claude previews it and requests confirmation before replacing a published commit. The routine automated path supports one ordinary, author-owned tip commit on an unmerged PR branch. Shared, signed or complex history needs a coordinated maintainer plan. New valid commits do not fix earlier invalid messages.
+
+The check itself never modifies repository contents or starts a Claude session. It uses read-only permissions, requires no AI API key and does not execute code from the PR. The new skill must be distributed before employees can invoke it; publishing this template does not update existing workflow copies or installed plugins automatically.
+
+Claude Code cloud sessions can use their assigned branch when it matches `claude/<lowercase-hyphenated-slug>-<six-character-lowercase-alphanumeric-id>`. The check recognizes the branch format. It does not verify who created the branch. PR titles and commit messages follow the usual rules.
