@@ -28,7 +28,7 @@ Ask the project maintainer to help with this first import if you cannot assess t
 ## 3. Create the destination (new project without history only)
 
 1. On GitHub select **New repository**. Set **Owner: Leuco-Tool-US**. If the organization is unavailable or creation is blocked, ask its administrator to create the repository for you.
-2. Use a descriptive lowercase name with hyphens. Select **Private**. Add a brief purpose and initialize with a README. This creates the initial `main` baseline, so your source import can be reviewed in a PR.
+2. Under **Repository template**, choose `Leuco-Tool-US/project-template-basic`. It supplies a README outline, contribution guide, proprietary notice, `.gitignore` and the naming check. For a Python application choose `Leuco-Tool-US/app-template-python` instead. Use a descriptive lowercase name with hyphens. Select **Private** and add a brief purpose. The template files create the initial `main` baseline, so your source import can be reviewed in a PR. If you start without a template, initialize with a README instead.
 3. Do not choose an open-source license without authorization. Create the repository and confirm its owner and private visibility.
 4. Clone this new repository into a new folder using the [VS Code guide](VSCODE-CHANGES.md). Keep your original source folder untouched.
 5. Create a branch named `chore/import-project` from `main` using that guide.
@@ -38,6 +38,6 @@ Ask the project maintainer to help with this first import if you cannot assess t
 
 The new repo does not automatically inherit another repo's checks, settings, templates or Claude installation. Before routine team use, its maintainer must apply the [repository defaults setup](MAINTAINING-DEFAULTS.md), inspect the project's workflow files before enabling execution, confirm intended access and merge settings, and verify run/test instructions with synthetic data. This setup is separate from approving hosting, production access, or deployment.
 
-For a brand-new application rather than an existing source import, ask the maintainer which company template fits. Do not assume a Python template fits a React application.
+For a brand-new project rather than an existing source import, start from the same templates: `project-template-basic` for most work, `app-template-python` for a Python application. Ask the maintainer if neither fits. Do not assume a Python template fits a React application.
 
 Official background: [Importing locally hosted code](https://docs.github.com/en/migrations/importing-source-code/using-the-command-line-to-import-source-code/adding-locally-hosted-code-to-github). Our first-import procedure uses a README baseline and review branch so the team can review the source before it joins `main`.
