@@ -1,6 +1,6 @@
 # Maintaining organization defaults
 
-The root CONTRIBUTING.md is the organization's employee guide. This file adds requirements for changes to the defaults themselves.
+The [Start here guide](START-HERE.md) is the employee entry point; root CONTRIBUTING.md owns shared contribution rules. This file adds requirements for changes to the defaults themselves. Maintain the task guides here rather than copying their steps into every repository. Project READMEs should link to this entry point and add only project-specific setup, run, test and release instructions.
 
 - Keep every file safe for public visibility, including workflow templates, issue forms, and the organization profile.
 - Consider the effect on repositories that inherit defaults. A local CONTRIBUTING.md or PR template replaces that default; GitHub does not merge the text.

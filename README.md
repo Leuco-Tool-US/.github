@@ -1,5 +1,7 @@
 # Organization GitHub Defaults
 
+**Looking for how to use GitHub? [Start here](docs/START-HERE.md).** This repository also maintains the shared rules and public organization profile.
+
 Shared GitHub defaults and workflow templates for LEUCO Tool Corporation repositories.
 
 ## Important visibility requirement

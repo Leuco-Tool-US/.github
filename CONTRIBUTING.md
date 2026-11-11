@@ -1,5 +1,7 @@
 # Contributing to Leuco US projects
 
+**New to GitHub? [Start here](https://github.com/Leuco-Tool-US/.github/blob/main/docs/START-HERE.md)** for step-by-step guides to reviewing, creating a branch, proposing changes, and uploading a project. This page defines the shared rules; you do not need to learn them all before your first document review.
+
 These are the default contribution guidelines for this organization's projects. A project's own guide should identify additional requirements or explicit exceptions. Company-wide access and data requirements still apply.
 
 You do not need to be a software engineer to contribute. Claude can help with technical steps; ask for explanations in plain language when needed. 
