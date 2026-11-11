@@ -7,7 +7,7 @@
   &nbsp; · &nbsp;
   <a href="https://github.com/Leuco-Tool-US?tab=repositories"><strong>Repositories</strong></a>
   &nbsp; · &nbsp;
-  <a href="https://github.com/Leuco-Tool-US/.github/blob/main/CONTRIBUTING.md"><strong>Contribution guide</strong></a>
+  <a href="https://github.com/Leuco-Tool-US/.github/blob/main/docs/START-HERE.md"><strong>Start here</strong></a>
 </p>
 
 ## Precision tools meet purpose built software.
@@ -15,6 +15,12 @@
 LEUCO supplies precision tooling for machining wood, plastics, and composites. Here, we bring that practical focus to software: solving everyday problems, improving how we work, and keeping useful knowledge within reach.
 
 This organization is home to LEUCO US's software projects, automation, and shared development resources.
+
+### New to the organization?
+
+**[Start here: choose what you want to do →](https://github.com/Leuco-Tool-US/.github/blob/main/docs/START-HERE.md)**
+
+Read a proposal, edit a document, work on an app, or upload an existing project. The guide explains each path step by step, including branches, commits and pull requests. You can start in your browser without installing anything.
 
 ### What we build
 
@@ -31,7 +37,7 @@ You do not need to be a software engineer to contribute. Start with a problem yo
 
 We use branches and pull requests to discuss proposed changes before they become part of the main project. That keeps the work reviewable and preserves the reasoning behind it.
 
-**[Read the contribution guide →](https://github.com/Leuco-Tool-US/.github/blob/main/CONTRIBUTING.md)**
+**[Follow a step-by-step guide](https://github.com/Leuco-Tool-US/.github/blob/main/docs/START-HERE.md)** · [Contribution rules](https://github.com/Leuco-Tool-US/.github/blob/main/CONTRIBUTING.md)
 
 ### For team members
 
