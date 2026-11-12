@@ -9,7 +9,7 @@ The goal is to bring usable project source into a company-owned repository for r
 | Starting point | Next step |
 | --- | --- |
 | A folder of source files, without Git history | Use the new-repository steps below. |
-| An existing Git repository, on your computer or in a personal account | Ask the maintainer to review a history-preserving import or transfer. Do not delete `.git`, force-push, or create a competing repo to work around it. Old commits need inspection too. |
+| An existing Git repository, on your computer or in a personal account | Old commits are uploaded too, so they need the same review as today's files. If the history is clean and you want to keep it, ask the maintainer to review a history-preserving import or transfer. If the history contains sensitive material or cannot be reviewed, do not upload it: copy the reviewed current files into a new folder without the `.git` folder, use the new-repository steps below, and say in the PR that history was left out and why. Keep the original folder and its `.git` untouched; do not force-push or rewrite its history. |
 | An existing company repository | Clone that repo and use a task branch. Do not initialize another copy or overwrite its history. |
 | A Claude artifact or hosted app link | Export the actual source first. A link or screenshot is not a complete project. Include required components, styles, assets, dependency files and run instructions; identify anything missing. |
 
@@ -28,7 +28,7 @@ Ask the project maintainer to help with this first import if you cannot assess t
 ## 3. Create the destination (new project without history only)
 
 1. On GitHub select **New repository**. Set **Owner: Leuco-Tool-US**. If the organization is unavailable or creation is blocked, ask its administrator to create the repository for you.
-2. Use a descriptive lowercase name with hyphens. Select **Private**. Add a brief purpose and initialize with a README. This creates the initial `main` baseline, so your source import can be reviewed in a PR.
+2. Under **Repository template**, choose `Leuco-Tool-US/project-template-basic`. It supplies a README outline, contribution guide, proprietary notice, `.gitignore` and the naming check. For a Python application choose `Leuco-Tool-US/app-template-python` instead. Use a descriptive lowercase name with hyphens. Select **Private** and add a brief purpose. The template files create the initial `main` baseline, so your source import can be reviewed in a PR. If you start without a template, initialize with a README instead.
 3. Do not choose an open-source license without authorization. Create the repository and confirm its owner and private visibility.
 4. Clone this new repository into a new folder using the [VS Code guide](VSCODE-CHANGES.md). Keep your original source folder untouched.
 5. Create a branch named `chore/import-project` from `main` using that guide.
@@ -38,6 +38,6 @@ Ask the project maintainer to help with this first import if you cannot assess t
 
 The new repo does not automatically inherit another repo's checks, settings, templates or Claude installation. Before routine team use, its maintainer must apply the [repository defaults setup](MAINTAINING-DEFAULTS.md), inspect the project's workflow files before enabling execution, confirm intended access and merge settings, and verify run/test instructions with synthetic data. This setup is separate from approving hosting, production access, or deployment.
 
-For a brand-new application rather than an existing source import, ask the maintainer which company template fits. Do not assume a Python template fits a React application.
+For a brand-new project rather than an existing source import, start from the same templates: `project-template-basic` for most work, `app-template-python` for a Python application. Ask the maintainer if neither fits. Do not assume a Python template fits a React application.
 
 Official background: [Importing locally hosted code](https://docs.github.com/en/migrations/importing-source-code/using-the-command-line-to-import-source-code/adding-locally-hosted-code-to-github). Our first-import procedure uses a README baseline and review branch so the team can review the source before it joins `main`.
