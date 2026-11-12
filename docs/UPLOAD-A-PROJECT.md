@@ -9,7 +9,7 @@ The goal is to bring usable project source into a company-owned repository for r
 | Starting point | Next step |
 | --- | --- |
 | A folder of source files, without Git history | Use the new-repository steps below. |
-| An existing Git repository, on your computer or in a personal account | Ask the maintainer to review a history-preserving import or transfer. Do not delete `.git`, force-push, or create a competing repo to work around it. Old commits need inspection too. |
+| An existing Git repository, on your computer or in a personal account | Old commits are uploaded too, so they need the same review as today's files. If the history is clean and you want to keep it, ask the maintainer to review a history-preserving import or transfer. If the history contains sensitive material or cannot be reviewed, do not upload it: copy the reviewed current files into a new folder without the `.git` folder, use the new-repository steps below, and say in the PR that history was left out and why. Keep the original folder and its `.git` untouched; do not force-push or rewrite its history. |
 | An existing company repository | Clone that repo and use a task branch. Do not initialize another copy or overwrite its history. |
 | A Claude artifact or hosted app link | Export the actual source first. A link or screenshot is not a complete project. Include required components, styles, assets, dependency files and run instructions; identify anything missing. |
 
