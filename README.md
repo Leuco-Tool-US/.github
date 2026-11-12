@@ -1,35 +1,15 @@
-# Organization GitHub Defaults
+# LEUCO US GitHub defaults
 
-**Looking for how to use GitHub? [Start here](docs/START-HERE.md).** This repository also maintains the shared rules and public organization profile.
+This repository maintains the public organization profile, shared contribution guidance, issue and pull request templates, and GitHub Actions workflow templates for LEUCO US.
 
-Shared GitHub defaults and workflow templates for LEUCO Tool Corporation repositories.
+GitHub is where we collaborate on software projects and review changes to their files. Start by browsing a project and reading its README. The organization profile explains how to use GitHub in your browser, set up Visual Studio Code, and get help from the company's Claude skills. [Browse repositories](https://github.com/orgs/Leuco-Tool-US/repositories) · [Organization profile](profile/README.md) · [Getting started](docs/START-HERE.md)
 
-## Important visibility requirement
+## How the defaults apply
 
-For a normal GitHub organization, GitHub requires the special `.github` repository to be public in order for default community health files to apply to the organization's other repositories. Keep this repository free of proprietary information, credentials, internal URLs, private employee information, and sensitive architecture details.
+GitHub uses this public `.github` repository as a source of default community health files. Repository-specific files take precedence for the defaults they replace. Maintainers can install workflow templates where appropriate.
 
-If the organization later uses Enterprise Managed Users, confirm the applicable GitHub visibility rules before changing this repository.
+Keep this public repository limited to material suitable for public release. Store proprietary application files in their approved repositories and credentials in approved secret storage.
 
-## What belongs here
+## Maintaining this repository
 
-- Default contribution guidance
-- Default pull request templates
-- Default issue templates
-- Generic security-reporting guidance
-- Organization workflow templates
-- Public organization profile content, if desired
-
-## What does not belong here
-
-- Secrets
-- Proprietary application code
-- Internal system diagrams
-- Private infrastructure details
-- Company-wide Claude skills or hooks
-- The engineering knowledge vault
-
-Repository-specific templates override organization defaults when a project needs something different.
-
-## Maintain these defaults
-
-Read [maintainer guidance](docs/MAINTAINING-DEFAULTS.md) and [naming check setup](docs/NAMING-CHECKS.md). The installed conventions workflow checks this repository too.
+Follow the [contribution guidelines](CONTRIBUTING.md). For changes to shared defaults or the naming check, see the [maintainer guide](docs/MAINTAINING-DEFAULTS.md) and [naming check documentation](docs/NAMING-CHECKS.md).
