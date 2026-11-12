@@ -8,8 +8,8 @@ GitHub keeps project files, their saved history, and discussions about proposed 
 
 1. Sign in with the individual GitHub account you use for company work. Do not share an account or password.
 2. Accept your organization invitation. If you do not have one, contact the person coordinating your onboarding through an existing company channel.
-3. Open [the organization's repositories](https://github.com/Leuco-Tool-US?tab=repositories). Private repositories appear only when you have access. A missing repository or 404 can mean missing access; it does not necessarily mean the link is wrong.
-4. Open [the team directory](https://github.com/Leuco-Tool-US/leuco-vault/blob/main/docs/TEAM-START-HERE.md) to find the right repository. This directory requires access to the private knowledge vault.
+3. Open [the organization's repositories](https://github.com/Leuco-Tool-US?tab=repositories). As a member you can read every repository in the organization, including the private ones. If a repository is missing or shows a 404, check that you accepted your invitation and are signed in with your company account before assuming the link is wrong.
+4. Open [the team directory](https://github.com/Leuco-Tool-US/leuco-vault/blob/main/docs/TEAM-START-HERE.md) to find the right repository. It is in the private knowledge vault, so sign in and accept your invitation first.
 5. Read your project's README for its purpose, owner, and instructions. Do not install developer tools just to read or review a document.
 
 ## What do you want to do?
